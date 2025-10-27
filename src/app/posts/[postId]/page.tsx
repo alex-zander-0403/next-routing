@@ -12,7 +12,7 @@ async function PostPage({ params }: { params: Promise<{ postId: string }> }) {
     <div className="flex justify-center items-center h-screen flex-col">
       <div className="fixed top-0 mt-20 w-full text-center space-y-5">
         <h2 className="text-3xl">Это пост номер {postId}</h2>
-        <p className="text-xl">Первый уровень вложенности!</p>
+        <p className="text-xl">Первый уровень динамической вложенности!</p>
         <p>{post.body}</p>
       </div>
 
@@ -21,14 +21,14 @@ async function PostPage({ params }: { params: Promise<{ postId: string }> }) {
           href={`/posts/${postId}/comments`}
           className="w-100 text-center px-8 py-2 text-2xl rounded bg-amber-700 hover:bg-amber-500 transition-all"
         >
-          Комментарии
+          Все комментарии
         </Link>
 
         <Link
           href="/posts"
           className="w-100 text-center px-8 py-2 text-2xl rounded bg-gray-700 hover:bg-gray-500 transition-all"
         >
-          К постам
+          Назад
         </Link>
 
         <Link
