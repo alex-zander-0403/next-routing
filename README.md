@@ -1,36 +1,77 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Маршрутизация и роутинг в Next.js
 
-## Getting Started
+## Вложенная маршрутизация (Nested Routes)
 
-First, run the development server:
+/blog - родительский маршрут
+/blog/first и /blog/second - дочерние маршруты
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+Структура URL: `/blog/first`, `/blog/second`
+
+```
+app/
+├── blog/
+│   ├── page.tsx          # /blog - главная страница блога
+│   ├── first/
+│   │   └── page.tsx      # /blog/first - блог 1
+│   └── second/
+│       └── page.tsx      # /blog/second - блог 2
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Динамические маршруты
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+/blog - родительский маршрут
+/products/[productId] - дочерние динамические маршруты
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Структура URL: `/products/123`
 
-## Learn More
+```
+app/
+├── products/
+│   ├── page.tsx          # /products - список товаров
+│   └── [productId]/
+│       └── page.tsx      # /products/123 - страница товара 123
+```
 
-To learn more about Next.js, take a look at the following resources:
+### Пример реализации:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```tsx
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```
 
-## Deploy on Vercel
+## Вложенные динамические маршруты
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Структура URL: `/products/electronics/123`
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```
+app/
+├── products/
+│   ├── page.tsx                 # /products - список категорий
+│   ├── [category]/
+│   │   ├── page.tsx             # /products/electronics - список товаров в категории
+│   │   └── [productId]/
+│   │       └── page.tsx         # /products/electronics/123 - страница товара 123
+```
+
+### Пример реализации:
+
+```tsx
+async function ProductPage({
+  params,
+}: {
+  params: Promise<{
+    category: string;
+    productId: string;
+  }>;
+}) {
+  const { category, productId } = await params;
+
+  return (
+    <div>
+      <h1>Категория: {category}</h1>
+      <p>Товар ID: {productId}</p>
+    </div>
+  );
+}
+
+export default ProductPage;
+```
