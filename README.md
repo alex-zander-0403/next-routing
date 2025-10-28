@@ -18,7 +18,7 @@ _Интерфейс_
 /blog/first и /blog/second      # дочерние маршруты
 ```
 
-```
+```markdown
 app/
 ├── blog/
 │   ├── page.tsx          # /blog - главная страница блога
