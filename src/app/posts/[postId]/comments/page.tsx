@@ -1,5 +1,13 @@
 import Link from "next/link";
 
+type myComment = {
+  postId: number;
+  id: number;
+  name: string;
+  email: string;
+  body: string;
+};
+
 async function Comments({ params }: { params: Promise<{ postId: string }> }) {
   const { postId } = await params;
 
@@ -15,7 +23,7 @@ async function Comments({ params }: { params: Promise<{ postId: string }> }) {
         <h2 className="text-3xl">Это комментарии поста номер {postId}</h2>
       </div>
 
-      {comments.map((comment) => (
+      {comments.map((comment: myComment) => (
         <div
           key={comment.id}
           className="flex flex-col px-5 py-3 w-200 gap-1 rounded-xl text-black bg-gray-500"
