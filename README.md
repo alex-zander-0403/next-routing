@@ -14,8 +14,8 @@ _Интерфейс_
 ```
 Структура URL: `/blog/first`, `/blog/second`
 
-/blog - родительский маршрут
-/blog/first и /blog/second - дочерние маршруты
+/blog                           # родительский маршрут
+/blog/first и /blog/second      # дочерние маршруты
 ```
 
 ```
