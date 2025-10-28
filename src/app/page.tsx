@@ -12,23 +12,30 @@ function Home() {
       <div className="flex justify-center items-center flex-col gap-5">
         <Link
           href="/blog"
-          className="w-100 text-center px-8 py-2 text-2xl rounded bg-gray-700 hover:bg-gray-600 transition-all"
+          className="w-150 text-center px-8 py-2 text-2xl rounded bg-gray-700 hover:bg-gray-600 transition-all"
         >
           Блог (Nested Routes)
         </Link>
 
         <Link
           href="/products"
-          className="w-100 text-center px-8 py-2 text-2xl rounded bg-gray-700 hover:bg-gray-600 transition-all"
+          className="w-150 text-center px-8 py-2 text-2xl rounded bg-gray-700 hover:bg-gray-600 transition-all"
         >
           Продукты (Dynamic Routes)
         </Link>
 
         <Link
           href="/posts"
-          className="w-100 text-center px-8 py-2 text-2xl rounded bg-gray-700 hover:bg-gray-600 transition-all"
+          className="w-150 text-center px-8 py-2 text-2xl rounded bg-gray-700 hover:bg-gray-600 transition-all"
         >
-          Посты
+          Посты (Dynamic Nested Routes)
+        </Link>
+
+        <Link
+          href="/docs"
+          className="w-150 text-center px-8 py-2 text-2xl rounded bg-gray-700 hover:bg-gray-600 transition-all"
+        >
+          Документация (Catch-all Segments)
         </Link>
       </div>
     </div>

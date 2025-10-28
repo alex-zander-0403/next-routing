@@ -26,6 +26,7 @@ async function CommentPage({
         <p>Комментарий: {comment.body}</p>
       </div>
 
+      {/* ----- nav ----- */}
       <div className="flex justify-center items-center gap-5">
         <Link
           href="/"
