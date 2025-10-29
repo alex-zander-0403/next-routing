@@ -18,7 +18,9 @@ async function ProductDetails({
       <div className="fixed top-0 mt-20 w-full text-center space-y-5">
         <h1 className=" text-4xl font-bold ">Продукт {productId}</h1>
         <p className="text-xl">Здесь описание и фото</p>
-        <p className="text-xl">Можно ввести id продукта вручную в URL, но не больше 100</p>
+        <p className="text-xl">
+          Можно ввести id продукта вручную в URL, но не больше 100
+        </p>
         <p className="text-xl">Иначе сработает not-found раздела!</p>
       </div>
 
