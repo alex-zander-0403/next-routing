@@ -1,12 +1,49 @@
 import Link from "next/link";
+import { Metadata } from "next";
 
-async function PostPage({ params }: { params: Promise<{ postId: string }> }) {
-  //
+// структура данных поста с API
+interface Post {
+  id: number;
+  title: string;
+  body: string;
+}
+
+// тип для объекта params от динамического родительского компонента
+type Props = {
+  params: Promise<{ postId: string }>;
+};
+
+// fetch функция для получения данных
+export const getPost = async (id: string): Promise<Post> => {
+  try {
+    const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`);
+
+    if (!res.ok) throw new Error(`Ошибка ответа сервера`);
+    return await res.json();
+  } catch (error) {
+    console.error(`Не удалось получить данные: ${id}`, error);
+  }
+};
+
+// функция генератор метаданных
+export const generateMetadata = async ({
+  params,
+}: Props): Promise<Metadata> => {
+  const { postId } = await params;
+  const post = await getPost(postId);
+
+  // формирование метаданных
+  return {
+    title: `Пост ${postId} | ${post.title}`,
+    description: post.body.slice(0, 160),
+  };
+};
+
+// экспорт асинхронного компонента с типизированными пропсами
+async function PostPage({ params }: Props) {
   const { postId } = await params;
 
-  const post = await fetch(
-    `https://jsonplaceholder.typicode.com/posts/${postId}`
-  ).then((res) => res.json());
+  const post = await getPost(postId);
 
   return (
     <div className="flex justify-center items-center h-screen flex-col">

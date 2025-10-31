@@ -1,12 +1,24 @@
 import Link from "next/link";
+import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-async function ProductDetails({
+type Props = {
+  params: Promise<{ productId: string }>;
+};
+
+export const generateMetadata = async ({
   params,
-}: {
-  params: Promise<{ productId: string; category: string }>;
-}) {
-  //   const productId = (await params).productId;
+}: Props): Promise<Metadata> => {
+  //
+  const { productId } = await params;
+
+  return {
+    title: `Продукт ${productId}`,
+    description: `Описание продукта ${productId}`,
+  };
+};
+
+async function ProductDetails({ params }: Props) {
   const { productId } = await params;
 
   if (parseInt(productId) > 100) {
@@ -14,8 +26,8 @@ async function ProductDetails({
   }
 
   return (
-    <div className="flex justify-center items-center h-screen flex-col">
-      <div className="fixed top-0 mt-20 w-full text-center space-y-5">
+    <div className="flex justify-center items-center flex-col gap-30 p-20">
+      <div className="flex justify-center items-center flex-col gap-5">
         <h1 className=" text-4xl font-bold ">Продукт {productId}</h1>
         <p className="text-xl">Здесь описание и фото</p>
         <p className="text-xl">
