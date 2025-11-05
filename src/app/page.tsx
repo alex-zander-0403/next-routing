@@ -37,6 +37,13 @@ function Home() {
         >
           Документация (Catch-all Segments)
         </Link>
+
+        <Link
+          href="/login"
+          className="w-150 text-center px-8 py-2 text-2xl rounded bg-gray-700 hover:bg-gray-600 transition-all"
+        >
+          Авторизация (Active Link)
+        </Link>
       </div>
     </div>
   );

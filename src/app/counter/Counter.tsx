@@ -5,7 +5,7 @@ function Counter() {
   const [counter, setCounter] = useState(0);
 
   return (
-    <div className="flex justify-center items-center flex-col gap-3 p-3 border-1 rounded-md border-gray-600 ">
+    <div className="flex justify-center items-center flex-col gap-3 p-3 border rounded-md border-gray-600 ">
       <div className="mt-20 w-full text-center space-y-5">
         Клиентская часть компонента counter
       </div>
