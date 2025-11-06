@@ -44,6 +44,13 @@ function Home() {
         >
           Авторизация (Active Link)
         </Link>
+
+        <Link
+          href="/news"
+          className="w-150 text-center px-8 py-2 text-2xl rounded bg-gray-700 hover:bg-gray-600 transition-all"
+        >
+          Новости (Search Params)
+        </Link>
       </div>
     </div>
   );
