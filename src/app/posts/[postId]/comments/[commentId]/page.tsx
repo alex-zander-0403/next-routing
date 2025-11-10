@@ -1,11 +1,21 @@
 import Link from "next/link";
 
-async function CommentPage({
+function getRandomInt(count: number) {
+  return Math.floor(Math.random() * count);
+}
+
+//
+export default async function CommentPage({
   params,
 }: {
   params: Promise<{ postId: string; commentId: string }>;
 }) {
   const { postId, commentId } = await params;
+
+  const random = getRandomInt(2);
+  if (random === 1) {
+    throw new Error("Ошибка: --> RANDOM");
+  }
 
   const comment = await fetch(
     `https://jsonplaceholder.typicode.com/comments/${commentId}?postId=${postId}`
@@ -20,7 +30,7 @@ async function CommentPage({
         <p className="text-xl">Второй уровень динамической вложенности!</p>
       </div>
 
-      <div className="flex justify-center items-start flex-col w-100 gap-3 p-5 border-1 border-gray-700 rounded-xl">
+      <div className="flex justify-center items-start flex-col w-100 gap-3 p-5 border border-gray-700 rounded-xl">
         <p>Автор: {comment.email}</p>
         <p>id комментария: {comment.id}</p>
         <p>Комментарий: {comment.body}</p>
@@ -45,5 +55,3 @@ async function CommentPage({
     </div>
   );
 }
-
-export default CommentPage;

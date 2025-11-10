@@ -3,8 +3,8 @@ import Link from "next/link";
 
 function Home() {
   return (
-    <div className="flex justify-center items-center h-screen flex-col">
-      <div className="fixed top-0 mt-20 w-full text-center space-y-5">
+    <div className="flex justify-center items-center flex-col gap-5">
+      <div className="mt-20 w-full text-center space-y-5">
         <h1 className=" text-4xl font-bold ">Роутинг в Next.js</h1>
         <p className="text-xl">Главная страница</p>
       </div>

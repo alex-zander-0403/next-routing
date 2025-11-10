@@ -14,7 +14,7 @@ type Props = {
 };
 
 // fetch функция для получения данных
-export const getPost = async (id: string): Promise<Post> => {
+async function getPost(id: string): Promise<Post> {
   try {
     const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`);
 
@@ -22,8 +22,9 @@ export const getPost = async (id: string): Promise<Post> => {
     return await res.json();
   } catch (error) {
     console.error(`Не удалось получить данные: ${id}`, error);
+    throw error;
   }
-};
+}
 
 // функция генератор метаданных
 export const generateMetadata = async ({
@@ -42,7 +43,6 @@ export const generateMetadata = async ({
 // экспорт асинхронного компонента с типизированными пропсами
 async function PostPage({ params }: Props) {
   const { postId } = await params;
-
   const post = await getPost(postId);
 
   return (
